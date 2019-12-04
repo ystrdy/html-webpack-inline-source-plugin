@@ -1,6 +1,6 @@
 {
-  "name": "html-webpack-inline-source-plugin",
-  "version": "1.0.0-beta.2",
+  "name": "html-webpack-inline-and-remove-source-plugin",
+  "version": "1.0.0",
   "description": "Embed javascript and css source inline when using the webpack dev server or middleware",
   "main": "index.js",
   "types": "index.d.ts",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dustinjackson/html-webpack-inline-source-plugin.git"
+    "url": "https://github.com/ystrdy/html-webpack-inline-source-plugin"
   },
   "keywords": [
     "webpack",
@@ -25,12 +25,12 @@
     "inline",
     "source"
   ],
-  "author": "Dustin Jackson <dustin.jackson@live.com> (https://github.com/DustinJackson)",
+  "author": "ystrdy <xu1930@qq.com> (https://github.com/ystrdy)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dustinjackson/html-webpack-inline-source-plugin/issues"
+    "url": "https://github.com/ystrdy/html-webpack-inline-source-plugin/issues"
   },
-  "homepage": "https://github.com/dustinjackson/html-webpack-inline-source-plugin",
+  "homepage": "https://github.com/ystrdy/html-webpack-inline-source-plugin",
   "devDependencies": {
     "cheerio": "^0.22.0",
     "css-loader": "^0.25.0",
