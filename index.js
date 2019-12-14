@@ -3,6 +3,7 @@ var escapeRegex = require('escape-string-regexp');
 var path = require('path');
 var slash = require('slash');
 var sourceMapUrl = require('source-map-url');
+var pkg = require('./package.json');
 
 function HtmlWebpackInlineSourcePlugin (htmlWebpackPlugin) {
   this.htmlWebpackPlugin = htmlWebpackPlugin;
@@ -12,10 +13,11 @@ HtmlWebpackInlineSourcePlugin.prototype.apply = function (compiler) {
   var self = this;
 
   // Hook into the html-webpack-plugin processing
-  compiler.hooks.compilation.tap('html-webpack-inline-source-plugin', compilation => {
-    self.htmlWebpackPlugin
-      .getHooks(compilation)
-      .alterAssetTagGroups.tapAsync('html-webpack-inline-source-plugin', (htmlPluginData, callback) => {
+  compiler.hooks.compilation.tap(pkg.name, compilation => {
+    compilation
+      .hooks
+      .htmlWebpackPluginAlterAssetTags
+      .tapAsync(pkg.name, (htmlPluginData, callback) => {
         if (!htmlPluginData.plugin.options.inlineSource) {
           return callback(null, htmlPluginData);
         }
