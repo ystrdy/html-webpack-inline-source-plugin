@@ -30,8 +30,8 @@ HtmlWebpackInlineSourcePlugin.prototype.apply = function (compiler) {
 };
 
 HtmlWebpackInlineSourcePlugin.prototype.processTags = function (compilation, regexStr, pluginData) {
-  var bodyTags = [];
-  var headTags = [];
+  var head = [];
+  var body = [];
 
   var regex = new RegExp(regexStr);
   var filename = pluginData.plugin.options.filename;
