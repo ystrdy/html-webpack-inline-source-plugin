@@ -10,8 +10,6 @@ function HtmlWebpackInlineSourcePlugin (htmlWebpackPlugin) {
 }
 
 HtmlWebpackInlineSourcePlugin.prototype.apply = function (compiler) {
-  var self = this;
-
   // Hook into the html-webpack-plugin processing
   compiler.hooks.compilation.tap(pkg.name, compilation => {
     compilation
@@ -24,7 +22,7 @@ HtmlWebpackInlineSourcePlugin.prototype.apply = function (compiler) {
 
         var regexStr = htmlPluginData.plugin.options.inlineSource;
 
-        var result = self.processTags(compilation, regexStr, htmlPluginData);
+        var result = this.processTags(compilation, regexStr, htmlPluginData);
 
         callback(null, result);
       });
@@ -32,20 +30,18 @@ HtmlWebpackInlineSourcePlugin.prototype.apply = function (compiler) {
 };
 
 HtmlWebpackInlineSourcePlugin.prototype.processTags = function (compilation, regexStr, pluginData) {
-  var self = this;
-
   var bodyTags = [];
   var headTags = [];
 
   var regex = new RegExp(regexStr);
   var filename = pluginData.plugin.options.filename;
 
-  pluginData.headTags.forEach(function (tag) {
-    headTags.push(self.processTag(compilation, regex, tag, filename));
+  pluginData.head.forEach(function (tag) {
+    head.push(this.processTag(compilation, regex, tag, filename));
   });
 
-  pluginData.bodyTags.forEach(function (tag) {
-    bodyTags.push(self.processTag(compilation, regex, tag, filename));
+  pluginData.body.forEach(function (tag) {
+    body.push(self.processTag(compilation, regex, tag, filename));
   });
 
   return { headTags: headTags, bodyTags: bodyTags, plugin: pluginData.plugin, outputName: pluginData.outputName };
