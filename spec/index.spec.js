@@ -10,6 +10,8 @@ var HtmlWebpackInlineSourcePlugin = require('../');
 
 var OUTPUT_DIR = path.join(__dirname, '../dist');
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 60 * 1000;
+
 describe('HtmlWebpackInlineSourcePlugin', function () {
   beforeEach(function (done) {
     rm_rf(OUTPUT_DIR, done);
